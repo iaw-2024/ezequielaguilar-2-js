@@ -1,0 +1,81 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Encabezado y navegación */
+  header {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    font-size: large;
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  #ufc{
+    background-color: red;
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+
+  
+  /* Contenido principal */
+  main {
+    background-image: url('../images/632699129_225018633_1706x960.webp');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    flex: 1;
+    margin: 0;
+    padding: 40px;
+  }
+  
+  .elemento {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(117, 2, 2, 0.2);
+    margin: 20px;
+    background-color: rgba(5, 1, 1, 0.4);
+  }
+
+  h1 {
+    font-weight: bold ;
+    color: rgb(255, 255, 255);
+  }
+
+  p{
+    color: rgb(255, 255, 255);
+    }
+
+  
+  /* Pie de página */
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
