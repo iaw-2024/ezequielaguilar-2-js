@@ -17,9 +17,9 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
 
-        if (!prevElementos.includes(data)) {
+        if (!prevElementos.includes(data.name)) {
             // Si no existe, agregarlo al arreglo
-            prevElementos = [...prevElementos, data];
+            prevElementos = [...prevElementos, data.name];
 
             // Crear el elemento div columna con las clases especificadas
             const nuevoElemento = document.createElement('div');
