@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 //engine para ejs
 app.set("view engine", "ejs");
 
-app.set('views', path.join(__dirname, '../public/express'));
+app.set('views', path.join(__dirname, '../views'));
 
 
 
