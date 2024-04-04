@@ -1,3 +1,5 @@
+let prevElementos = [];
+
 document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar que el formulario se envíe
 
@@ -15,33 +17,39 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     .then(response => response.json())
     .then(data => {
 
-        // Crear el elemento div columna con las clases especificadas
-        const nuevoElemento = document.createElement('div');
-        nuevoElemento.className = 'col-lg-4 col-md-6 col-sm-12 p-3';
+        if (!prevElementos.includes(data)) {
+            // Si no existe, agregarlo al arreglo
+            prevElementos = [...prevElementos, data];
 
-        //Inserta el div de adentro del div columna
-        const nuevoSubelemento = document.createElement('div');
-        nuevoSubelemento.className = 'bg-dark p-3 rounded';
+            // Crear el elemento div columna con las clases especificadas
+            const nuevoElemento = document.createElement('div');
+            nuevoElemento.className = 'col-lg-4 col-md-6 col-sm-12 p-3';
 
-        //Inserta el h1 dentro del div
-        const nuevoSubelemento2 = document.createElement('h1');
-        nuevoSubelemento2.className = 'text-white';
-        nuevoSubelemento2.innerHTML = data.name;
+            //Inserta el div de adentro del div columna
+            const nuevoSubelemento = document.createElement('div');
+            nuevoSubelemento.className = 'bg-dark p-3 rounded';
 
-        const nuevoSubelemento3 = document.createElement('p');
-        nuevoSubelemento3.className = 'text-white';
-        nuevoSubelemento3.innerHTML = data.description;
+            //Inserta el h1 dentro del div
+            const nuevoSubelemento2 = document.createElement('h1');
+            nuevoSubelemento2.className = 'text-white';
+            nuevoSubelemento2.innerHTML = data.name;
 
-        nuevoSubelemento.appendChild(nuevoSubelemento2);
-        nuevoSubelemento.appendChild(nuevoSubelemento3);
+            const nuevoSubelemento3 = document.createElement('p');
+            nuevoSubelemento3.className = 'text-white';
+            nuevoSubelemento3.innerHTML = data.description;
 
-        nuevoElemento.appendChild(nuevoSubelemento);
+            nuevoSubelemento.appendChild(nuevoSubelemento2);
+            nuevoSubelemento.appendChild(nuevoSubelemento3);
 
-        // Obtener el elemento contenedor fila por su ID
-        const contenedor = document.getElementById('filaContenedor');
+            nuevoElemento.appendChild(nuevoSubelemento);
 
-        // Insertar el nuevo elemento dentro del contenedor
-        contenedor.appendChild(nuevoElemento);
+            // Obtener el elemento contenedor fila por su ID
+            const contenedor = document.getElementById('filaContenedor');
+
+            // Insertar el nuevo elemento dentro del contenedor
+            contenedor.appendChild(nuevoElemento);
+        }
+        
 
     })
     .catch(error => {
