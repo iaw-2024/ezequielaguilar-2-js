@@ -6,20 +6,21 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     // Obtener el valor del input
     const nombreNuevo = document.getElementById('nombreNuevo').value;
 
-    // Enviar el dato al servidor
-    fetch("/cliente_servidor/request_datos", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nombreNuevo: nombreNuevo })
-    })
-    .then(response => response.json())
-    .then(data => {
+    if (!prevElementos.includes(nombreNuevo)){
 
-        if (!prevElementos.includes(data.name)) {
-            // Si no existe, agregarlo al arreglo
-            prevElementos = [...prevElementos, data.name];
+        // Si no existe, agregarlo al arreglo
+        prevElementos = [...prevElementos, nombreNuevo];
+
+        // Enviar el dato al servidor
+        fetch("/cliente_servidor/request_datos", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombreNuevo: nombreNuevo })
+        })
+        .then(response => response.json())
+        .then(data => {
 
             // Crear el elemento div columna con las clases especificadas
             const nuevoElemento = document.createElement('div');
@@ -48,11 +49,11 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 
             // Insertar el nuevo elemento dentro del contenedor
             contenedor.appendChild(nuevoElemento);
-        }
-        
 
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    }
 });
